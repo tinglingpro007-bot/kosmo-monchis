@@ -13,6 +13,7 @@ import {
   type NewVentaItem,
   type Producto,
 } from "@/db/schema";
+import { MENSAJE_CANTIDAD_NEGATIVA } from "@/domain/movimientos";
 import { estaVencido } from "@/domain/productos";
 
 import { MENSAJES, redondear2, type LineaVenta } from "./logic";
@@ -58,8 +59,11 @@ export async function registrarVentaAction(
       if (!producto) return { success: false, error: MENSAJES.noExiste };
       if (estaVencido(producto, hoy)) return { success: false, error: MENSAJES.vencido };
       const cantidad = linea.cantidad;
-      if (!Number.isInteger(cantidad) || cantidad <= 0 || cantidad > producto.cantidadDisponible) {
+      if (!Number.isInteger(cantidad) || cantidad <= 0) {
         return { success: false, error: `Las existencias de ${producto.nombre} no son suficientes` };
+      }
+      if (cantidad > producto.cantidadDisponible) {
+        return { success: false, error: MENSAJE_CANTIDAD_NEGATIVA };
       }
 
       preparados.push({

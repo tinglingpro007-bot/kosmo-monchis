@@ -8,3 +8,4 @@
  * reutilizar la persistencia y reglas de entidades comunes sin acoplarse directamente entre sí.
  */
 export * from "./productos";
+export * from "./movimientos";

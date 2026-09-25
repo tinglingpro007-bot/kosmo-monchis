@@ -55,6 +55,24 @@ export const ventaItems = sqliteTable("venta_items", {
   subtotal: real("subtotal").notNull(),
 });
 
+/**
+ * Movimientos de existencias distintos de la venta (entradas y ajustes).
+ * Registran fecha, tipo, cantidad y responsable (Regla 5 de negocio).
+ */
+export const movimientos = sqliteTable("movimientos", {
+  id: text("id").primaryKey(),
+  productoId: text("producto_id")
+    .notNull()
+    .references(() => productos.id),
+  tipo: text("tipo").notNull(),
+  cantidad: integer("cantidad").notNull(),
+  motivo: text("motivo"),
+  responsable: text("responsable").notNull(),
+  fecha: integer("fecha", { mode: "timestamp" })
+    .notNull()
+    .$defaultFn(() => new Date()),
+});
+
 export type Vendedor = typeof vendedores.$inferSelect;
 export type NewVendedor = typeof vendedores.$inferInsert;
 export type Producto = typeof productos.$inferSelect;
@@ -63,3 +81,5 @@ export type Venta = typeof ventas.$inferSelect;
 export type NewVenta = typeof ventas.$inferInsert;
 export type VentaItem = typeof ventaItems.$inferSelect;
 export type NewVentaItem = typeof ventaItems.$inferInsert;
+export type Movimiento = typeof movimientos.$inferSelect;
+export type NewMovimiento = typeof movimientos.$inferInsert;

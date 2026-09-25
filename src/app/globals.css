@@ -4,23 +4,23 @@
   /* ═══ KOSMO DESIGN TOKENS (Adaptables por proyecto) ═══ */
 
   /* Paleta semántica */
-  --app-primary: #00824d;
-  --app-primary-rgb: 0, 130, 77;
-  --app-secondary: #7f6b76;
-  --app-secondary-rgb: 127, 107, 118;
+  --app-primary: #008371;
+  --app-primary-rgb: 0, 131, 113;
+  --app-secondary: #816b70;
+  --app-secondary-rgb: 129, 107, 112;
   --app-success: #36912e;
   --app-success-rgb: 54, 145, 46;
   --app-warning: #cd8800;
   --app-warning-rgb: 205, 136, 0;
   --app-danger: #cc2827;
   --app-danger-rgb: 204, 40, 39;
-  --app-accent: #0094b1;
-  --app-accent-rgb: 0, 148, 177;
+  --app-accent: #008cc5;
+  --app-accent-rgb: 0, 140, 197;
 
   /* Superficies y texto */
-  --app-body-bg: #f6fcf8;
+  --app-body-bg: #f5fcfa;
   --app-card-bg: #ffffff;
-  --app-muted-bg: #e6f2eb;
+  --app-muted-bg: #e4f2ef;
   --app-muted-text: #64748b;
   --app-border: #e2e8f0;
   --app-text: #1e293b;
